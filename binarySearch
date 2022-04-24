@@ -1,0 +1,75 @@
+#include <iostream>
+using namespace std;
+
+int linearSearch(int arr[], int n, int k)
+{
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] == k)
+        {
+            cout << "Element is present at index " << i << endl;
+        }
+    }
+    return -1;
+}
+
+int binarySearch(int arr[], int l, int r, int x)
+{
+    if (r >= l)
+    {
+        int mid = l + (r - l) / 2;
+        if (arr[mid] == x)
+            return mid;
+        if (arr[mid] > x)
+            return binarySearch(arr, l, mid - 1, x);
+        return binarySearch(arr, mid + 1, r, x);
+    }
+    return -1;
+}
+void solve()
+{
+    int n;
+    cout << "ENTER THE SIZE OF AN ARRAY : " << endl;
+    cin >> n;
+    int arr[n];
+
+    cout << "ENTER ELEMENTS OF AN ARRAY : " << endl;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
+
+    cout << endl;
+    int Case;
+    cout << "ENTER 1 FOR LINAER SEARCH, 2 FOR BINARY SEARCH :" << endl;
+    cin >> Case;
+    cout << "CASE ENTERED : " << Case << endl;
+    if (Case == 1)
+    {
+        int target;
+
+        cout << "ENTER TARGET ELEMENT : " << endl;
+        cin >> target;
+        int result = linearSearch(arr, n, target);
+        (result == -1)
+            ? cout << "Element is not present in array" << endl
+            : cout << "Element is present at index " << result << endl;
+    }
+
+    if (Case == 2)
+    {
+        int target;
+        cout << "ENTER TARGET ELEMENT : " << endl;
+        cin >> target;
+        int result = binarySearch(arr, 0, n - 1, target);
+        (result == -1)
+            ? cout << "Element is not present in array" << endl
+            : cout << "Element is present at index " << result << endl;
+    }
+}
+int main()
+{
+    cout << "\t\t Adosh Singh 2020UII7403" << endl;
+    solve();
+    return 0;
+}
